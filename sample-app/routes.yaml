@@ -1,0 +1,18 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: sample-app
+  namespace: sisc-devops
+  labels:
+    app: productpage
+    app.kubernetes.io/instance: guestbook
+    service: productpage
+spec:
+  host: sample-app.apps.ocpdev.dti.co.id
+  to:
+    kind: Service
+    name: productpage
+    weight: 100
+  port:
+    targetPort: http
+  wildcardPolicy: None
